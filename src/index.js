@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { fetchBreeds } from './dog-api';
 import { fetchdogByBreed } from './dog-api';
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 
 axios.defaults.headers.common['x-api-key'] =
   'live_Ev9ikRJKWdpo8gOATNRZ9jrWKuqdEbkLHNDuIxea4n70lKNzEsbRcqjuXxY9MIVk';
@@ -26,20 +28,24 @@ function breedTemplates(arr) {
 function onContentLoaded() {
   refs.breedSelectorEl.classList.add('is-hidden');
   refs.loaderEl.classList.remove('is-hidden');
+
   fetchBreeds()
     .then(res => {
       refs.breedSelectorEl.classList.remove('is-hidden');
       refs.loaderEl.classList.add('is-hidden');
 
       refs.breedSelectorEl.innerHTML = breedTemplates(res);
+      new SlimSelect({
+        select: '#single',
+      });
     })
-    .catch(err => console.log(refs.errorEl));
+    .catch(err => console.log(err));
 }
 
 function dogInfoTemplate(data) {
   console.log(data);
   return `
-      <img class="dog-image" src="${data[0].url}">
+      <img class="dog-image" src="${data[0].url}" loading="lazy">
       <h2>${data[0].breeds[0].name}</h2>
       <p class="dog-descr">
         Breed suitable for ${data[0].breeds[0].bred_for}<br><br>

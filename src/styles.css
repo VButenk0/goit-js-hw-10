@@ -2,6 +2,9 @@
   display: none;
   visibility: hidden;
 }
+body {
+  background: rgba(118, 200, 255, 0.433);
+}
 
 .dog-info {
   display: flex;
@@ -9,10 +12,17 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 25px auto auto;
+  background: #fff;
+  width: 700px;
+  border-radius: 10px;
+  box-shadow: -3px 5px 10px rgba(0, 0, 0, 0.626);
 }
 
 .dog-image {
   width: 500px;
+  border-radius: 10px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -29,6 +39,7 @@
   width: 48px;
   height: 48px;
   margin: auto;
+  margin-top: 200px;
   position: relative;
 }
 .loader:before {
@@ -47,7 +58,7 @@
   content: '';
   width: 100%;
   height: 100%;
-  background: #231aa0b4;
+  background: rgba(54, 125, 255, 0.763);
   animation: bxSpin 0.5s linear infinite;
   position: absolute;
   top: 0;
